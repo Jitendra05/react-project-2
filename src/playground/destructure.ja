@@ -1,0 +1,32 @@
+// ----------------------------------------------------------------------
+// Object destructuring 
+// ----------------------------------------------------------------------
+// const person = {
+//     // name: 'jitendra',
+//     age:35,
+//     location: {
+//         city:'pune',
+//         temp:72
+//     }
+// }
+
+// const {name='Annynomous', age} = person;
+// console.log(`${name} : ${age}`);
+
+// const {city, temp:temprature} = person.location;
+// if(city && temprature) {
+//     console.log(`${city} : ${temprature}`);
+// }
+
+// const {city:locationname} = person.location;
+// console.log(locationname);
+
+// ----------------------------------------------------------------------
+// Array destructuring 
+// ----------------------------------------------------------------------
+
+// const address = ['sai pushp nivas', 'pune', 'maharashtra','411027'];
+
+// const [,city,state='MH'] = address;
+
+// console.log(`You are in ${city} ${state}`);

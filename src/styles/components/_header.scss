@@ -1,0 +1,39 @@
+.header {
+    background:$off-black;
+    color:$off-white;
+    margin-bottom: $s-size;
+    padding: $s-size 0;
+}
+
+.header__title {
+    font-size: $l-size;
+    margin: 0;
+}
+
+.header__subtitle {
+    font-size: $s-size;
+    font-weight: 300;
+    margin: 0;
+    color:$off-cyan;
+}
+
+.footer {
+    background:$off-black;
+    color:$off-white;
+    padding: $s-size;
+    margin-top: 20rem;
+}
+
+.rdt_TableHeader  {
+    background: $dark-lighten;
+}
+
+.rdt_TableFooter {
+    background: $dark-lighten;
+}
+
+@media(min-width:$desktop-breakpoint) {
+    .header {
+        margin-bottom: $xl-size;
+    }
+}
