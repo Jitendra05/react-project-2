@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render EditExpanseComponent correctly 1`] = `
+<div
+  className="container"
+>
+  <ExpanseForm
+    expanse={
+      Object {
+        "amount": 1200,
+        "createdAt": "1969-12-28T00:00:00.000Z",
+        "description": "water bill",
+        "id": "3",
+        "note": "",
+      }
+    }
+    onSubmit={[Function]}
+  />
+  <WarningModal
+    closePopup={[Function]}
+    id="warningModal"
+    isVisible={false}
+    message="Are you sure? You want to update the expanse."
+    okPopup={[Function]}
+    title="Warning"
+  />
+  <SuccessModal
+    id="SuccessModal"
+    isVisible={false}
+    message="Expanse updated sucessfuly."
+    title="Success"
+  />
+</div>
+`;

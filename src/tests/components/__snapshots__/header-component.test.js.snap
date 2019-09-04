@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Header component correctly 1`] = `
+<div
+  className="header"
+>
+  <div
+    className="container"
+  >
+    <header>
+      <h1
+        className="header__title"
+      >
+        Expansify
+      </h1>
+      <h2>
+        track your expanses
+      </h2>
+      <NavLink
+        activeClassName="is-active"
+        exact={true}
+        to="/"
+      >
+        Dashboard
+      </NavLink>
+      <NavLink
+        activeClassName="is-active"
+        to="/add"
+      >
+        Add Expanse
+      </NavLink>
+    </header>
+  </div>
+</div>
+`;

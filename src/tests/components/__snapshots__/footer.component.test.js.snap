@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Footer component correctly 1`] = `
+<div
+  className="footer"
+>
+  <div
+    className="container"
+  >
+    <h4
+      className="header__subtitle"
+    >
+      Udemy React Course Project @ Part 2
+    </h4>
+  </div>
+</div>
+`;

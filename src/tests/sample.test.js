@@ -7,6 +7,8 @@ test("should add two number",()=>{
     expect(result).toBe(7);
 });
 
+
+
 test("should generate greeting with provided name",()=>{
     const result= greeting('jitendra');
     expect(result).toBe('hello jitendra');

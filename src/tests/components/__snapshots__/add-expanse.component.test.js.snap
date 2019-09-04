@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render AddExpanseComponent correctly 1`] = `
+<div
+  className="container"
+>
+  <h2>
+    Add Expanse
+  </h2>
+  <hr />
+  <ExpanseForm
+    onSubmit={[Function]}
+  />
+</div>
+`;

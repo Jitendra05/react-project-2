@@ -3,9 +3,14 @@ import {connect} from 'react-redux';
 import ExpanseTable from './expanse-table.component';
 import visibleExpanse from '../selectors/visible-expanses';
 
-const ExpanseList = (props) => (
+export const ExpanseList = (props) => (
     <div>
-        <ExpanseTable expanses={props.expanses} />
+        {props.expanses.length===0 ? (
+            <h3>No expanses</h3>
+        ):
+        (
+            <ExpanseTable expanses={props.expanses} />
+        )}
     </div>
 );
 

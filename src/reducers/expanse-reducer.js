@@ -1,5 +1,4 @@
 export default (state = expansesReducerDefaultState, action)=> {
-    // console.log(action);
     switch(action.type) {
 
         case 'ADD_EXPANSE':

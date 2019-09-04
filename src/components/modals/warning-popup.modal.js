@@ -7,6 +7,7 @@ const WarningModal = (props) => (
             onRequestClose={props.closePopup}
             closeTimeoutMS={300}
             className="modal"
+            id="warning"
         >
             <h3 className="modal__title">{props.title}</h3>
             {props.message && <p className="modal__body">{props.message}</p>}
@@ -26,6 +27,6 @@ const WarningModal = (props) => (
         </ReactModal>
     );
 
-    ReactModal.setAppElement('#app');
+    // ReactModal.setAppElement('#app');
    
 export default WarningModal;
