@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "serve": "live-server public/",
-    "build": "webpack",
-    "dev-server": "webpack-dev-server --hot --host localhost --port 4444",
+    "build": "webpack -p --env production",
+    "start": "webpack-dev-server --open --hot --host localhost --port 4444 --env development",
     "test": "jest --config=jest.config.json"
   },
   "dependencies": {
@@ -45,8 +45,10 @@
     "enzyme": "3.0.0",
     "enzyme-adapter-react-16": "1.0.0",
     "enzyme-to-json": "3.0.1",
+    "extract-text-webpack-plugin": "3.0.2",
     "jest": "20.0.4",
     "raf": "3.3.2",
-    "react-test-renderer": "16.0.0"
+    "react-test-renderer": "16.0.0",
+    "webpack-merge": "4.2.2"
   }
 }
