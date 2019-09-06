@@ -5,6 +5,20 @@ import {removeExpanse} from '../actions/expanse-action';
 import WarningModal from './modals/warning-popup.modal';
 import SuccessModal from './modals/success-popup.modal';
 import {connect} from 'react-redux';
+import moment from 'moment';
+const currencyFormatter = require('currency-formatter');
+
+const CustomCreatedAt = ({ row }) => (
+    <div>
+        {moment(row.createdAt).format('MMMM Do, YYYY')}
+    </div>
+  );
+
+  const CustomAmount = ({ row }) => (
+    <div>
+        {currencyFormatter.format(row.amount,{code:'INR'})}
+    </div>
+  );
 
 class ExpanseTable extends React.Component{
     constructor(props) {
@@ -16,8 +30,9 @@ class ExpanseTable extends React.Component{
             updatedProps:undefined
         }
     }
+
+   
      columns = [
-    
         {
             name: "Description",
             selector: "description",
@@ -27,13 +42,15 @@ class ExpanseTable extends React.Component{
           name: "Amount",
           selector: "amount",
           sortable: true,
-          right: true
+          right: true,
+          cell: row => <CustomAmount row={row} />
         },
         {
           name: "Created At",
           selector: "createdAt",
           sortable: true,
-          right: true
+          right: true,
+          cell: row => <CustomCreatedAt row={row} />
         },
         {
             name: 'Edit Expanse',

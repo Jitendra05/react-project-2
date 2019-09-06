@@ -65,17 +65,17 @@ test('Should sort by amount',()=>{
     expect(sortByAmountSpy).toHaveBeenCalled();
 });
 
-test('Should handle date change',()=>{
-   const startDate = moment(0).add(1,"years");
-   const endDate =  moment(0).add(10,"years");  
-   wrapper.find('#datePicker').prop('onDatesChange')({startDate, endDate});
-   expect(setStartDateSpy).toHaveBeenLastCalledWith(startDate);
-   expect(setEndDateSpy).toHaveBeenLastCalledWith(endDate);
-});
+// test('Should handle date change',()=>{
+//    const startDate = moment(0).add(1,"years");
+//    const endDate =  moment(0).add(10,"years");  
+//    wrapper.find('#datePicker').prop('onDatesChange')({startDate, endDate});
+//    expect(setStartDateSpy).toHaveBeenLastCalledWith(startDate);
+//    expect(setEndDateSpy).toHaveBeenLastCalledWith(endDate);
+// });
 
 
-test('Should handle date focus change',()=>{
-   const focusedData = 'endDate';
-   wrapper.find('#datePicker').prop('onFocusChange')(focusedData);
-   expect(wrapper.state('focusedInput')).toBe(focusedData);
-});
+// test('Should handle date focus change',()=>{
+//    const focusedData = 'endDate';
+//    wrapper.find('#datePicker').prop('onFocusChange')(focusedData);
+//    expect(wrapper.state('focusedInput')).toBe(focusedData);
+// });

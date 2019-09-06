@@ -20,6 +20,7 @@
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
     "css-loader": "3.2.0",
+    "currency-formatter": "1.5.5",
     "express": "4.15.4",
     "live-server": "^1.2.0",
     "moment": "2.24.0",

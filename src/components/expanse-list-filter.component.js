@@ -53,7 +53,6 @@ export class ExpanseListFilterComponent extends React.Component {
                     <option value='amount'>Amount</option>
                 </select>
                 <DateRangePicker
-                    id="datePicker"
                     startDate={this.props.filters.startDate} // momentPropTypes.momentObj or null,
                     startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
                     endDate={this.props.filters.endDate} // momentPropTypes.momentObj or null,

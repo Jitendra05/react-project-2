@@ -27,6 +27,6 @@ const WarningModal = (props) => (
         </ReactModal>
     );
 
-    // ReactModal.setAppElement('#app');
+// ReactModal.setAppElement('#app');
    
 export default WarningModal;

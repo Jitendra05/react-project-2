@@ -43,7 +43,6 @@ exports[`Should render ExpanseListFilterComponent correctly 1`] = `
     focusedInput={null}
     hideKeyboardShortcutsPanel={false}
     horizontalMargin={0}
-    id="datePicker"
     initialVisibleMonth={null}
     inputIconPosition="before"
     isDayBlocked={[Function]}
@@ -168,7 +167,6 @@ exports[`Should render ExpanseListFilterComponent with filters data correctly 1`
     focusedInput={null}
     hideKeyboardShortcutsPanel={false}
     horizontalMargin={0}
-    id="datePicker"
     initialVisibleMonth={null}
     inputIconPosition="before"
     isDayBlocked={[Function]}
