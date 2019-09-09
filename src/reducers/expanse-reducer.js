@@ -19,6 +19,9 @@ export default (state = expansesReducerDefaultState, action)=> {
                 }
           });
 
+          case 'SET_EXPANSES':
+            return action.expanses;
+
          default:
            return state;
     }

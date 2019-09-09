@@ -6,20 +6,20 @@ export const expanses = [
         description:'rent',
         note:'',
         amount:9000,
-        createdAt:moment(0).add(4,"days"),
+        createdAt:-4000,
     },
     {
         id:'2',
         description:'gas bill',
         note:'',
         amount:900,
-        createdAt:moment(0),
+        createdAt:1000,
     },
     {
         id:'3',
         description:'water bill',
         note:'',
         amount:1200,
-        createdAt:moment(0).subtract(4,"days"),
+        createdAt:4000,
     }
 ];

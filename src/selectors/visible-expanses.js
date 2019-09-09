@@ -5,7 +5,7 @@ export default (expanses, {text, sortBy, startDate, endDate}) => {
         const createdAtMoment = moment(expanse.createdAt);
         const startDateMatch = startDate? startDate.isSameOrBefore(createdAtMoment,'day') : true;
         const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment,'day') : true;
-        const textMatch = expanse.description.toLowerCase().includes(text.toLowerCase());
+        const textMatch = expanse.description? expanse.description.toLowerCase().includes(text.toLowerCase()): true;
         return startDateMatch && endDateMatch && textMatch;
     }).sort((a,b)=>{
         if(sortBy === 'date') {

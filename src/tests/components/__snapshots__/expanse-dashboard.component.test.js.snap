@@ -5,6 +5,7 @@ exports[`should render ExpanseDashboardComponent component correctly 1`] = `
   className="container"
 >
   <[object Object] />
+  <[object Object] />
   <hr />
   <[object Object] />
 </div>

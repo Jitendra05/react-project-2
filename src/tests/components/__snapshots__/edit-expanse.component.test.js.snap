@@ -8,7 +8,7 @@ exports[`Should render EditExpanseComponent correctly 1`] = `
     expanse={
       Object {
         "amount": 1200,
-        "createdAt": "1969-12-28T00:00:00.000Z",
+        "createdAt": 4000,
         "description": "water bill",
         "id": "3",
         "note": "",

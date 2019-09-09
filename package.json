@@ -8,8 +8,8 @@
     "start": "node server/server.js",
     "heroku-postbuild": "npm run build",
     "build": "webpack -p --env production",
-    "serve": "webpack-dev-server --open --hot --host localhost --port 4444 --env development",
-    "test": "jest --config=jest.config.json"
+    "serve": "cross-env NODE_ENV=development webpack-dev-server --open --hot --host localhost --port 4444 --env development",
+    "test": "cross-env NODE_ENV=test jest --config=jest.config.json"
   },
   "dependencies": {
     "babel-cli": "6.24.1",
@@ -19,9 +19,12 @@
     "babel-plugin-transform-object-rest-spread": "6.26.0",
     "babel-preset-env": "1.5.2",
     "babel-preset-react": "6.24.1",
+    "cross-env": "5.2.1",
     "css-loader": "3.2.0",
     "currency-formatter": "1.5.5",
+    "dotenv": "8.1.0",
     "express": "4.15.4",
+    "firebase": "6.6.0",
     "live-server": "^1.2.0",
     "moment": "2.24.0",
     "node-sass": "4.7.2",
@@ -36,6 +39,7 @@
     "react-redux": "7.1.1",
     "react-router-dom": "5.0.1",
     "redux": "4.0.4",
+    "redux-thunk": "2.3.0",
     "sass-loader": "6.0.6",
     "style-loader": "1.0.0",
     "styled-components": "4.3.2",
@@ -52,6 +56,7 @@
     "jest": "20.0.4",
     "raf": "3.3.2",
     "react-test-renderer": "16.0.0",
+    "redux-mock-store": "1.5.3",
     "webpack-merge": "4.2.2"
   }
 }

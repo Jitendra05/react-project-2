@@ -6,6 +6,8 @@ import AppRouter from './routers/app-router.component';
 import configureStore from './store/configure-store';
 import 'react-dates/lib/css/_datepicker.css';
 import 'react-dates/initialize';
+import './firebase/firebase';
+import {startSetExpanses} from './actions/expanse-action';
 
 const store = configureStore();
 
@@ -17,6 +19,11 @@ const jsx = (
     </div>
 );
 
-ReactDOM.render(jsx, document.getElementById('app'));
+ReactDOM.render(<p>Loding ...</p>, document.getElementById('app'));
+
+store.dispatch(startSetExpanses()).then(()=>{
+    ReactDOM.render(jsx, document.getElementById('app'));
+});
+
 
 
