@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
 import DataTable from "react-data-table-component";
-import {removeExpanse} from '../actions/expanse-action';
+import {startRemoveExpanse} from '../actions/expanse-action';
 import WarningModal from './modals/warning-popup.modal';
 import SuccessModal from './modals/success-popup.modal';
 import {connect} from 'react-redux';
@@ -27,7 +27,7 @@ class ExpanseTable extends React.Component{
             isSuccess:false,
             isWarning:false,
             id:undefined,
-            updatedProps:undefined
+            updatedExpanse:undefined
         }
     }
 
@@ -86,24 +86,19 @@ class ExpanseTable extends React.Component{
         console.log("Selected Rows: ", state.selectedRows);
       };
 
-    closePopup = () => {
-        this.setState(()=> ({isSuccess:false,
-            isWarning:false}));
+      closePopup = () => {
+        this.setState(() => ({isSuccess:false,isWarning:false}));
     }
-    okPopup = (props) => {
-        console.log(this.props);
-
-        this.setState(()=> ({isSuccess:true,
-            isWarning:false}));
-            setTimeout(() => {
-                props.dispatch(
-                    removeExpanse({id:this.state.id}));
-                    this.setState(()=> ({isSuccess:false,
-                        isWarning:false}));
-            }, 1000);
-
+    okPopup = () => {
+        this.setState(()=> ({isSuccess:true,isWarning:false}));
+        setTimeout(() => {
+            console.log(this.props);
+            this.props.startRemoveExpanse({id:this.state.id});
+            // this.props.history.push('/');
+            // window.location.reload();
+            this.setState(()=> ({isSuccess:false,isWarning:false}));
+        }, 1000);
     }
-
     render() {
         return  (
             <div>
@@ -120,10 +115,7 @@ class ExpanseTable extends React.Component{
             title='Warning' 
             message='Are you sure? You want to remove the expanse.' 
             closePopup={this.closePopup}
-            okPopup={()=>{
-                this.setState(()=>({updatedProps:this.props}))
-                this.okPopup(this.props);
-            }}
+            okPopup={this.okPopup}
         />
         <SuccessModal 
             isVisible={this.state.isSuccess}
@@ -136,10 +128,13 @@ class ExpanseTable extends React.Component{
     }
 }
 
-const mapStateToProps = (props) => {
+
+const mapDispatchToProps = (dispatch) => {
+    console.log(dispatch);
     return {
-        updatedProps: props
+
+        startRemoveExpanse: (id,updatedExpanse) => dispatch(startRemoveExpanse(id,updatedExpanse))
     };
 };
 
-export default connect(mapStateToProps)(ExpanseTable);
+export default connect(undefined, mapDispatchToProps)(ExpanseTable);

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import ExpanseForm from './expanse-form.component';
-import {editExpanse} from '../actions/expanse-action';
+import {startEditExpanse} from '../actions/expanse-action';
 import WarningModal from './modals/warning-popup.modal';
 import SuccessModal from './modals/success-popup.modal';
 
@@ -22,7 +22,7 @@ export class  EditExpanseComponent extends React.Component {
     okPopup = () => {
         this.setState(()=> ({isSuccess:true,isWarning:false}));
         setTimeout(() => {
-            this.props.editExpanse(this.state.id,this.state.updatedExpanse);
+            this.props.startEditExpanse(this.state.id,this.state.updatedExpanse);
             this.props.history.push('/');
         }, 1000);
     }
@@ -70,7 +70,7 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        editExpanse: (id,updatedExpanse) => dispatch(editExpanse(id,updatedExpanse))
+        startEditExpanse: (id,updatedExpanse) => dispatch(startEditExpanse(id,updatedExpanse))
     };
 };
 

@@ -51,9 +51,26 @@ export const editExpanse = (id, updatedExpanse = {}) => ({
     id,
     updatedExpanse
 });
+
+export const startEditExpanse = (id, updatedExpanse = {}) => {
+    return (dispatch) => {
+        return database.ref(`expanses/${id}`).update(updatedExpanse).then(()=>{
+            dispatch(editExpanse(id,updatedExpanse));
+        });
+    }
+}
+
  
 // REMOVE_EXPANSE
 export const removeExpanse = ({id} = {}) => ({
     type:'REMOVE_EXPANSE',
     id
 });
+
+export const startRemoveExpanse = ({id} = {}) => {
+    return (dispatch) => {
+        return database.ref(`expanses/${id}`).remove().then(()=>{
+           dispatch(removeExpanse({id}));
+        });
+    }
+}
