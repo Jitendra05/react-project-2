@@ -1,34 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Should render EditExpanseComponent correctly 1`] = `
-<div
-  className="container"
->
-  <ExpanseForm
-    expanse={
-      Object {
-        "amount": 1200,
-        "createdAt": 4000,
-        "description": "water bill",
-        "id": "3",
-        "note": "",
+<div>
+  <div
+    className="page-header"
+  >
+    <div
+      className="container"
+    >
+      <h2
+        className="page-header__title"
+      >
+        Edit Expense
+      </h2>
+    </div>
+  </div>
+  <div
+    className="container"
+  >
+    <ExpanseForm
+      expanse={
+        Object {
+          "amount": 1200,
+          "createdAt": 4000,
+          "description": "water bill",
+          "id": "3",
+          "note": "",
+        }
       }
-    }
-    onSubmit={[Function]}
-  />
-  <WarningModal
-    closePopup={[Function]}
-    id="warningModal"
-    isVisible={false}
-    message="Are you sure? You want to update the expanse."
-    okPopup={[Function]}
-    title="Warning"
-  />
-  <SuccessModal
-    id="SuccessModal"
-    isVisible={false}
-    message="Expanse updated sucessfuly."
-    title="Success"
-  />
+      onSubmit={[Function]}
+    />
+    <WarningModal
+      closePopup={[Function]}
+      id="warningModal"
+      isVisible={false}
+      message="Are you sure? You want to update the expanse."
+      okPopup={[Function]}
+      title="Warning"
+    />
+    <SuccessModal
+      id="SuccessModal"
+      isVisible={false}
+      message="Expanse updated sucessfuly."
+      title="Success"
+    />
+  </div>
 </div>
 `;

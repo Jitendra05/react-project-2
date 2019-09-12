@@ -7,15 +7,16 @@ export const addExpanse = (expanse) => ({
 });
 
 export const startAddExpanse = (expanseData = {}) => {
-  return (dispatch) => {
-    const {
-        description='',
-        note='',
-        amount=0,
-        createdAt=0
-    } = expanseData;
-    const expanse = { description, note, amount, createdAt};
-    return database.ref('expanses').push(expanse).then((snapshot)=>{
+    return (dispatch, getState) => {
+        const {
+            description='',
+            note='',
+            amount=0,
+            createdAt=0
+        } = expanseData;
+        const expanse = { description, note, amount, createdAt};
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expanses`).push(expanse).then((snapshot)=>{
         dispatch(addExpanse({
             id: snapshot.key,
             ...expanse
@@ -31,8 +32,9 @@ export const setExpanses = (expanses) => ({
 });
 
 export const startSetExpanses = () => {
-  return (dispatch) => {
-    return database.ref('expanses').once('value').then((snapshot)=>{
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expanses`).once('value').then((snapshot)=>{
         const expanseList = [];
         snapshot.forEach((child) => {
             expanseList.push({
@@ -53,8 +55,9 @@ export const editExpanse = (id, updatedExpanse = {}) => ({
 });
 
 export const startEditExpanse = (id, updatedExpanse = {}) => {
-    return (dispatch) => {
-        return database.ref(`expanses/${id}`).update(updatedExpanse).then(()=>{
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expanses/${id}`).update(updatedExpanse).then(()=>{
             dispatch(editExpanse(id,updatedExpanse));
         });
     }
@@ -68,8 +71,9 @@ export const removeExpanse = ({id} = {}) => ({
 });
 
 export const startRemoveExpanse = ({id} = {}) => {
-    return (dispatch) => {
-        return database.ref(`expanses/${id}`).remove().then(()=>{
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/expanses/${id}`).remove().then(()=>{
            dispatch(removeExpanse({id}));
         });
     }

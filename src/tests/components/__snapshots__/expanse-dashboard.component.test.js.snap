@@ -1,12 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ExpanseDashboardComponent component correctly 1`] = `
-<div
-  className="container"
->
+<div>
   <[object Object] />
   <[object Object] />
-  <hr />
-  <[object Object] />
+  <div
+    className="container"
+  >
+    <[object Object] />
+  </div>
 </div>
 `;

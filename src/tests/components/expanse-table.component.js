@@ -36,19 +36,19 @@ class ExpanseTable extends React.Component{
           right: true
         },
         {
-            name: 'Edit Expanse',
+            name: 'Edit Expense',
             button: true,
             right:true,
             cell: row => (
                 <div>
-                    <NavLink to={`/edit/${row.id}`} className="button button--link">
+                    <NavLink to={`/edit/${row.id}`} className="button">
                         Edit
                     </NavLink>
                 </div>
             ),
           },
           {
-            name: 'Remove Expanse',
+            name: 'Remove Expense',
             button: true,
             right:true,
             cell: (row) => <button className="button" onClick={()=>{
@@ -91,7 +91,7 @@ class ExpanseTable extends React.Component{
         return  (
             <div>
             <DataTable
-                title="Expanses"
+                title="Expenses"
                 columns={this.columns}
                 data={this.props.expanses}
                 selectableRows

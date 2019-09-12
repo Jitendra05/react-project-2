@@ -39,24 +39,33 @@ export class  EditExpanseComponent extends React.Component {
     }
     render() {
         return (
-            <div className="container">
-               <ExpanseForm expanse={this.props.expanse} onSubmit={this.onSubmit} 
-               />
-                <WarningModal 
-                    id="warningModal"
-                    isVisible={this.state.isWarning}
-                    title='Warning' 
-                    message='Are you sure? You want to update the expanse.' 
-                    closePopup={this.closePopup}
-                    okPopup={this.okPopup}
+            <div>
+                <div className="page-header">
+                    <div className="container">
+                        <h2 className="page-header__title">
+                            Edit Expense
+                        </h2>
+                    </div>
+                </div>
+                <div className="container">
+                <ExpanseForm expanse={this.props.expanse} onSubmit={this.onSubmit} 
                 />
-                <SuccessModal
-                    id="SuccessModal" 
-                    isVisible={this.state.isSuccess}
-                    title='Success' 
-                    message='Expanse updated sucessfuly.'
-                />
-            </div>
+                    <WarningModal 
+                        id="warningModal"
+                        isVisible={this.state.isWarning}
+                        title='Warning' 
+                        message='Are you sure? You want to update the expanse.' 
+                        closePopup={this.closePopup}
+                        okPopup={this.okPopup}
+                    />
+                    <SuccessModal
+                        id="SuccessModal" 
+                        isVisible={this.state.isSuccess}
+                        title='Success' 
+                        message='Expanse updated sucessfuly.'
+                    />
+                </div>
+             </div>
         );
     }
 }

@@ -2,16 +2,18 @@ import React from 'react';
 import {shallow} from 'enzyme';
 import {EditExpanseComponent} from '../../components/edit-expanse.component';
 import {expanses} from '../fixtures/expanses-data';
-
-let editExpanseSpy, okPopupSpy, historySpy, wrapper;
+import {
+  startEditExpanse,
+} from '../../actions/expanse-action';
+let startEditExpanseSpy, okPopupSpy, historySpy, wrapper;
 
 beforeEach(()=>{
   okPopupSpy = jest.fn();
-  editExpanseSpy =  jest.fn();
+  startEditExpanseSpy =  jest.fn();
   historySpy = {push:jest.fn()};
   wrapper = shallow(
     <EditExpanseComponent 
-        editExpanse={editExpanseSpy} 
+        startEditExpanse={startEditExpanseSpy} 
         history={historySpy} 
         expanse={expanses[2]}
         okPopup={okPopupSpy}

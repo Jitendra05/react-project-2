@@ -1,0 +1,9 @@
+.input-group {
+    display: flex;
+    flex-direction: row;
+    margin: $s-size 0;
+}
+
+.input-group__item {
+    margin: 0 $s-size;
+}

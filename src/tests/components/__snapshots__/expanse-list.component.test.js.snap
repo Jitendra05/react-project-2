@@ -34,8 +34,14 @@ exports[`should render ExpanseList component correctly with expanses 1`] = `
 
 exports[`should render ExpanseList component correctly with no expanses 1`] = `
 <div>
-  <h3>
-    No expanses
-  </h3>
+  <div
+    className="container"
+  >
+    <h3
+      className="table-heading"
+    >
+      Please add your expenses.
+    </h3>
+  </div>
 </div>
 `;

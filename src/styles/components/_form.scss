@@ -1,0 +1,16 @@
+.from-view {
+    display: flex;
+    flex-direction: column;  
+    margin: $s-size 0;
+   > * {
+        margin-bottom: $xs-size;
+    }
+}
+
+.form-error {
+    color: white;
+    background: red;
+    font-weight: 300;
+    padding: $s-size;
+    font-style: italic;
+}

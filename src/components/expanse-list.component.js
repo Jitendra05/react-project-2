@@ -6,7 +6,9 @@ import visibleExpanse from '../selectors/visible-expanses';
 export const ExpanseList = (props) => (
     <div>
         {props.expanses.length===0 ? (
-            <h3>No expanses</h3>
+            <div className="container">
+                <h3 className="table-heading">Please add your expenses.</h3>
+            </div>
         ):
         (
             <ExpanseTable expanses={props.expanses} />

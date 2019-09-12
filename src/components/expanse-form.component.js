@@ -52,56 +52,59 @@ export default class ExpanseForm extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.state.error && <h4>{this.state.error}</h4>}
-                <form onSubmit={this.onSubmit}>
-                    <div>
+                <form className="from-view" onSubmit={this.onSubmit}>
+                {this.state.error && <h4 className="form-error">{this.state.error}</h4>}
+                <div className="text-label ">
                         <label>Description:</label>
-                        <input 
-                            type="text" 
-                            placeholder="Description" 
-                            value={this.state.description}
-                            onChange={this.onDescriptionChange}
-                        />
                     </div>
-                    <div>
+                    <input 
+                        type="text" 
+                        autoFocus
+                        className="text-input"
+                        placeholder="Description" 
+                        value={this.state.description}
+                        onChange={this.onDescriptionChange}
+                    />
+                    
+                    <div className="text-label ">
                         <label>Amount:</label>
-                        <input 
-                            type="number" 
-                            placeholder="Amount"
-                            value={this.state.amount}
-                            onChange={this.onAmountChange}
-                        />
                     </div>
-                    <div>
+                    <input 
+                        type="number" 
+                        className="text-input"
+                        placeholder="Amount"
+                        value={this.state.amount}
+                        onChange={this.onAmountChange}
+                    />
+                   <div className="text-label ">
                         <label>Created At:</label>
-                        <SingleDatePicker
-                                date={this.state.createdAt} // momentPropTypes.momentObj or null
-                                onDateChange={createdAt =>{
-                                    if(createdAt){
-                                        this.setState({ createdAt })
-                                    }
-                                }} // PropTypes.func.isRequired
-                                focused={this.state.focused} // PropTypes.bool
-                                onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-                                id="someid" // PropTypes.string.isRequired,
-                                numberOfMonths={1}
-                                isOutsideRange={() => false}
-                        />
                     </div>
-                    <div>
+                    <SingleDatePicker
+                            date={this.state.createdAt} // momentPropTypes.momentObj or null
+                            onDateChange={createdAt =>{
+                                if(createdAt){
+                                    this.setState({ createdAt })
+                                }
+                            }} // PropTypes.func.isRequired
+                            focused={this.state.focused} // PropTypes.bool
+                            onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+                            id="someid" // PropTypes.string.isRequired,
+                            numberOfMonths={1}
+                            isOutsideRange={() => false}
+                    />
+                    <div className="text-label ">
                         <label>Note:</label>
-                        <textarea 
-                            placeholder="write a note on your expanse(optional)"
-                            value={this.state.note}
-                            onChange={this.onNoteChange}
-                        />
                     </div>
+                    <textarea 
+                        placeholder="write a note on your expanse(optional)"
+                        className="text-area"
+                        value={this.state.note}
+                        onChange={this.onNoteChange}
+                    />
                     <div>
-                        <button>Save</button>
+                        <button className="large-button">Save Expense</button>
                     </div>
                 </form>
-            </div>
         );
     }
 }

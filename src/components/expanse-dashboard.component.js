@@ -4,11 +4,12 @@ import ExpanseListFilter from './expanse-list-filter.component';
 import ExpanseSummary from '../components/expanse-summary.component';
 
 const ExpanseDashboardComponent = () => (
-    <div className="container">
+    <div>
         <ExpanseSummary />
         <ExpanseListFilter />
-        <hr />
-        <ExpanseList />
+        <div className="container">
+         <ExpanseList />
+        </div>
     </div>
 );
 

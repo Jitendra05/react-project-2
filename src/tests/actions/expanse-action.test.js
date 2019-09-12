@@ -2,10 +2,12 @@ import {expanses} from '../fixtures/expanses-data';
 import {
     addExpanse,
     editExpanse,
+    startEditExpanse,
     removeExpanse,
     startAddExpanse,
     setExpanses,
-    startSetExpanses
+    startSetExpanses,
+    startRemoveExpanse
 } from '../../actions/expanse-action';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
@@ -13,27 +15,25 @@ import database from '../../firebase/firebase';
 import expanseReducer from '../../reducers/expanse-reducer';
 
 const createMockStore = configureMockStore([thunk]);
+const uid = 'sometestuid';
+const defaultAuthState = { auth: {uid} };
+
+
+let originalTimeout=0;
 
 beforeEach((done) => {
-  const expansesData = {};
-  expanses.forEach(({id, description, amount, note, createdAt}) => {
-    expansesData[id] = {  description, amount, note, createdAt };
+    const expansesData = {};
+    expanses.forEach(({id, description, amount, note, createdAt}) => {
+      expansesData[id] = {  description, amount, note, createdAt };
+    });
+    database.ref(`users/${uid}/expanses`).set(expansesData).then(()=> done());
+    originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 100000;
   });
-  database.ref('expanses').set(expansesData).then(()=> done());
+
+afterEach(function() {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
 });
-
-// let originalTimeout=0;
-
-// beforeEach(function() {
-//     originalTimeout = jasmine.DEFAULT_TIMEOUT_INTERVAL;
-//     console.log('originalTimeout: '+originalTimeout);
-//     jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
-// });
-
-// afterEach(function() {
-//     console.log('DEFAULT_TIMEOUT_INTERVAL: '+ jasmine.DEFAULT_TIMEOUT_INTERVAL);
-//     jasmine.DEFAULT_TIMEOUT_INTERVAL = originalTimeout;
-// });
 
 test('should generate add expanse action object with expanse data', ()=>{
     const result = addExpanse(expanses[0]);
@@ -44,7 +44,7 @@ test('should generate add expanse action object with expanse data', ()=>{
 });
 
 test('should add expanse with provided data to database and store', (done)=>{
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
     const expanseData = {
         description: 'mouse',
         amount: 250,
@@ -60,7 +60,7 @@ test('should add expanse with provided data to database and store', (done)=>{
                ...expanseData
            }
        });
-       return database.ref(`expanses/${actions[0].expanse.id}`).once('value');
+       return database.ref(`users/${uid}/expanses/${actions[0].expanse.id}`).once('value');
     }).then((snapshot)=>{
         expect(snapshot.val()).toEqual(expanseData);
         done();
@@ -68,7 +68,7 @@ test('should add expanse with provided data to database and store', (done)=>{
 });
 
 test('should add expanse with default data to database and store', (done)=>{
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
     const expanseDefaultData = {
         description: '',
         amount: 0,
@@ -84,7 +84,7 @@ test('should add expanse with default data to database and store', (done)=>{
                ...expanseDefaultData
            }
        });
-       return database.ref(`expanses/${actions[0].expanse.id}`).once('value');
+       return database.ref(`users/${uid}/expanses/${actions[0].expanse.id}`).once('value');
     }).then((snapshot)=>{
         expect(snapshot.val()).toEqual(expanseDefaultData);
         done();
@@ -108,6 +108,8 @@ test('should generate remove expanse action object', ()=>{
     });
 });
 
+
+
 test('should generate set expanses action object', ()=>{
     const result = setExpanses(expanses);
     expect(result).toEqual({
@@ -128,7 +130,7 @@ test('should set expanses', ()=>{
 
 
 test('should fetch the expanses from database', (done)=>{
-    const store = createMockStore({});
+    const store = createMockStore(defaultAuthState);
     store.dispatch(startSetExpanses()).then(()=>{
        const actions = store.getActions();
        expect(actions[0]).toEqual({
@@ -140,3 +142,40 @@ test('should fetch the expanses from database', (done)=>{
 });
 
 
+test('should remove expanse from firebase', (done)=>{
+    const store = createMockStore(defaultAuthState);
+    const id = expanses[2].id;
+    store.dispatch(startRemoveExpanse({id})).then(()=>{
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type:'REMOVE_EXPANSE',
+            id
+        });
+        return database.ref(`users/${uid}/expanses/${id}`).once('value');
+    }).then((snapshot)=>{
+        expect(snapshot.val()).toBeFalsy();
+        done();
+    });
+});
+
+test('should update expanse into firebase', (done)=>{
+    const store = createMockStore(defaultAuthState);
+    const id = expanses[2].id;
+    const updatedExpanse = {
+        description: 'updated rent',
+        amount: 9500
+    }
+    store.dispatch(startEditExpanse(id,updatedExpanse)).then(()=>{
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type:'EDIT_EXPANSE',
+            id,
+            updatedExpanse
+        });
+        return database.ref(`users/${uid}/expanses/${id}`).once('value');
+    }).then((snapshot)=>{
+        expect(snapshot.val().description).toBe(updatedExpanse.description);
+        expect(snapshot.val().amount).toBe(updatedExpanse.amount);
+        done();
+    });
+});

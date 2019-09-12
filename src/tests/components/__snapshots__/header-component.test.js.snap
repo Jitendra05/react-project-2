@@ -1,35 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render Header component correctly 1`] = `
+exports[`should render HeaderPage component correctly 1`] = `
 <div
   className="header"
 >
   <div
     className="container"
   >
-    <header>
-      <h1
+    <div
+      className="header__content"
+    >
+      <Link
         className="header__title"
+        to="/dashboard"
       >
-        Expansify
-      </h1>
-      <h2>
-        track your expanses
-      </h2>
-      <NavLink
-        activeClassName="is-active"
-        exact={true}
-        to="/"
+        <h1>
+          Expensify
+        </h1>
+      </Link>
+      <button
+        className="button button--link"
       >
-        Dashboard
-      </NavLink>
-      <NavLink
-        activeClassName="is-active"
-        to="/add"
-      >
-        Add Expanse
-      </NavLink>
-    </header>
+        Logout
+      </button>
+    </div>
   </div>
 </div>
 `;

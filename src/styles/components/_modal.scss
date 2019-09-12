@@ -33,7 +33,7 @@
     color: $off-white;
     padding: $s-size;
     max-width: 25rem;
-    max-height: 8rem;
+    max-height: 10rem;
     text-align: center;
     outline: none;
    
@@ -46,7 +46,7 @@
 }
 
 .modal__body {
-    margin:  $s-size 0 $s-size 0;
+    margin:  $s-size 0;
     font-size: $s-size;
     font-weight: 300;
     // word-break: break-all;
