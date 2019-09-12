@@ -10,7 +10,7 @@ const currencyFormatter = require('currency-formatter');
 
 const CustomCreatedAt = ({ row }) => (
     <div>
-        {moment(row.createdAt).format('MMMM Do, YYYY')}
+        {moment(row.createdAt).format('MMM Do, YY')}
     </div>
   );
 
@@ -35,8 +35,14 @@ class ExpanseTable extends React.Component{
      columns = [
         {
             name: "Description",
-            selector: "description",
-            sortable: true
+            sortable: true,
+            cell: row => (
+                <div>
+                    <NavLink to={`/edit/${row.id}`} className="button button--link">
+                    {row.description}
+                    </NavLink>
+                </div>
+            )
         },
         {
           name: "Amount",
@@ -50,22 +56,23 @@ class ExpanseTable extends React.Component{
           selector: "createdAt",
           sortable: true,
           right: true,
+        //   hide: 'md',
           cell: row => <CustomCreatedAt row={row} />
         },
-        {
-            name: 'Edit Expanse',
-            button: true,
-            right:true,
-            cell: row => (
-                <div>
-                    <NavLink to={`/edit/${row.id}`} className="button button--link">
-                        Edit
-                    </NavLink>
-                </div>
-            ),
-          },
+        // {
+        //     name: 'Edit Expense',
+        //     button: true,
+        //     right:true,
+        //     cell: row => (
+        //         <div>
+        //             <NavLink to={`/edit/${row.id}`} className="button button--link">
+        //                 Edit
+        //             </NavLink>
+        //         </div>
+        //     ),
+        //   },
           {
-            name: 'Remove Expanse',
+            name: 'Remove Expense',
             button: true,
             right:true,
             cell: (row) => <button className="button" onClick={()=>{
@@ -103,11 +110,11 @@ class ExpanseTable extends React.Component{
         return  (
             <div>
             <DataTable
-                title="Expanses"
+                title="Expenses"
                 columns={this.columns}
                 data={this.props.expanses}
-                selectableRows
-                onRowSelected={this.handleChange}
+                // selectableRows
+                // onRowSelected={this.handleChange}
                 pagination
             />
         <WarningModal 

@@ -1,9 +1,15 @@
 .input-group {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: $s-size 0;
+    @media (min-width:$desktop-breakpoint) {
+        flex-direction: row;
+    }
 }
 
 .input-group__item {
-    margin: 0 $s-size;
+    margin: $xs-size 0;
+    @media (min-width:$desktop-breakpoint) {
+        margin: 0 $s-size;
+    }
 }
