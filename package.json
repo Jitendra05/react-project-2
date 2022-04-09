@@ -27,7 +27,7 @@
     "firebase": "6.6.0",
     "history": "4.9.0",
     "live-server": "^1.2.0",
-    "moment": "2.24.0",
+    "moment": "2.29.2",
     "node-sass": "4.7.2",
     "react": "16.8.0",
     "react-addons-shallow-compare": "15.6.2",
